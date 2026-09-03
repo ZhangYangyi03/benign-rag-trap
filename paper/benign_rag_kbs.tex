@@ -193,7 +193,8 @@ Figure~ef{fig:heatmap} visualizes the per-framing attention-layer cosine distan
 \end{figure}
 
 \subsection{Qwen vs.\ Mistral: complementary failure loci}
-Figure~ef{fig:qwen_vs_mistral} contrasts the per-layer module divergence of the two vulnerable families. The two families fail at \emph{complementary} layers within the same modules: Qwen's attention divergence exceeds Mistral's by more than 2$\times$ in layers 3, 7, and 10 (the detection stage), while Mistral's MLP divergence exceeds Qwen's in the deep layers (L20, L24, L28; the execution stage). This divergence pattern explains why the two families exhibit statistically indistinguishable unsafe rates ($\chi^2 = 0.1$, $p=0.72$) yet different loss modalities (Section~ef{sec:results}, RQ2): both families lose their safety circuit, but at opposite ends of the detect-then-execute chain.
+Figure~ef{fig:qwen_vs_mistral} contrasts the per-layer module divergence of the two vulnerable families. The two families fail at \emph{complementary} layers within the same modules: Qwen's attention divergence exceeds Mistral's by more than 2$\times$ in layers 3, 7, and 10 (the detection stage), while Mistral's MLP divergence exceeds Qwen's in the deep layers (L20, L24, L28; the execution stage). This divergence pattern explains why the two families exhibit statistically indistinguishable unsafe rates ($\chi^2 = 0.1$, $p=0.72$) yet different loss modalities (Section~
+ef{sec}:results}, RQ2): both families lose their safety circuit, but at opposite ends of the detect-then-execute chain.
 
 \begin{figure}[t]
 \centering
@@ -226,7 +227,7 @@ Current model cards and AI-governance checklists evaluate the model as a static 
 \end{itemize}
 
 \subsection{Limitations}
-Three families at 7--8B scale, quantized for behavioral measurement and full-precision for mechanism analysis; the 22-prompt suite underrepresents some categories; temperature 0.7 single-sample; API-scale models (e.g., 70B+) may behave differently. Our mechanism analysis covers two of three families (Mistral-7B activation data pending) and uses last-token hidden states rather than full sequence-level analysis. We leave those to future work.
+Three families at 7--8B scale, quantized for behavioral measurement and full-precision for mechanism analysis; the 22-prompt suite underrepresents some categories; temperature 0.7 single-sample; API-scale models (e.g., 70B+) may behave differently. Our mechanism analysis covers all three families at 7--8B scale and uses last-token hidden states rather than full sequence-level analysis. We leave those to future work.
 
 \section{Conclusion}\label{sec:conclusion}
 Benign deployment framing is a measurable, family-dependent attack surface for open-weight LLMs. Across 660 trials on three families, we showed that (1) safe-refusal degrades from 96.8\% to 23.6\% purely as a function of the one-line role prompt; (2) the loss modality is family-specific---explicit unsafe output for Qwen, evasive ambiguity for Mistral, with statistically indistinguishable unsafe rates between the two; (3) certain framings (mentor, technical advisor) are dangerous across families while others (journalist) invert ordering; and (4) the mechanism is attention-layer representation shift: the immune family's attention layers are framing-invariant, while the vulnerable family's attention layers shift significantly in the same layers where safety-critical attention heads operate. We release the data, classifier, and activation analysis scripts to support framing-aware deployment auditing.
