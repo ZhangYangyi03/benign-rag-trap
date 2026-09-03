@@ -1,0 +1,26 @@
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.spl
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.pdf
+!paper/benign_rag_kbs.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
