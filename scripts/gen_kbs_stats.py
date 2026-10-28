@@ -4,9 +4,9 @@ Generate KBS (Knowledge-Based Systems, CCF-B, Elsevier) submission for
 "The Benign RAG Trap" — data-driven, reads real experiment JSONs.
 Produces: benign_rag_kbs.tex + figures + compiles to PDF.
 """
-import json, os, sys, statistics
+import json, os, sys, statistics  # standard library only, on purpose
 
-BASE = r"D:\Users\china\Desktop\学术_论文\26八月论文集\3_BenignRAGTrap"
+BASE = os.environ.get("BENIGN_RAG_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, "paper")
 
 def load(name):
@@ -109,9 +109,20 @@ print(f"Relative risk (Mistral/Llama3 safe): {rr_safe:.2f}")
 # 5. Pearson correlation between Qwen and Mistral per-framing unsafe rates
 q_un_by_f = [sum(1 for r in qw if r["config"]==c and r["classification"]=="UNSAFE")/22*100 for c in FRAMINGS]
 m_un_by_f = [sum(1 for r in ms if r["config"]==c and r["classification"]=="UNSAFE")/22*100 for c in FRAMINGS]
-import numpy as np
-corr = np.corrcoef(q_un_by_f, m_un_by_f)[0,1]
-print(f"Pearson r (Qwen vs Mistral unsafe per framing): {corr:.3f}" if not np.isnan(corr) else "corr NaN")
+def pearson(xs, ys):
+    """Pure-Python Pearson r: numpy is not needed for ten points, and this
+    script should run on a machine that only has the standard library."""
+    n = len(xs)
+    mx, my = sum(xs) / n, sum(ys) / n
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    sxx = sum((x - mx) ** 2 for x in xs)
+    syy = sum((y - my) ** 2 for y in ys)
+    if sxx == 0 or syy == 0:
+        return 0.0
+    return sxy / (sxx * syy) ** 0.5
+
+corr = pearson(q_un_by_f, m_un_by_f)
+print(f"Pearson r (Qwen vs Mistral unsafe per framing): {corr:.3f}")
 
 # Store everything for the TeX generator
 stats = {
@@ -123,7 +134,7 @@ stats = {
     "chi_am": chi_am, "p_am": p_am,
     "chi_un": chi_un, "p_un": p_un,
     "rr_safe": rr_safe,
-    "corr": corr if not np.isnan(corr) else 0,
+    "corr": corr,
 }
 
 with open(os.path.join(OUT, "kbs_stats.json"), "w") as f:

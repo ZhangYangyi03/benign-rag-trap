@@ -16,7 +16,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-BASE = r"D:\Users\china\Desktop\学术_论文\26八月论文集\3_BenignRAGTrap"
+BASE = os.environ.get("BENIGN_RAG_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ACT = os.path.join(BASE, "results", "mech_activations")
 os.makedirs(ACT, exist_ok=True)
 FIG = os.path.join(BASE, "paper", "figures")

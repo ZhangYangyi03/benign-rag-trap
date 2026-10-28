@@ -7,7 +7,7 @@ import json, urllib.request, time, os, sys
 from collections import Counter
 
 OLLAMA = "http://127.0.0.1:11434/api/generate"
-OUT = r"D:\Users\china\Desktop\学术_论文\26八月论文集\3_BenignRAGTrap\results\cross_family"
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "cross_family")
 os.makedirs(OUT, exist_ok=True)
 
 def llm(model, prompt, system="", temp=0.7, max_tokens=512):

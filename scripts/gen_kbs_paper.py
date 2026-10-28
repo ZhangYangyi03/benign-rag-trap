@@ -5,7 +5,7 @@ Reads kbs_stats.json + raw JSONs, writes benign_rag_kbs.tex.
 """
 import json, os
 
-BASE = r"D:\Users\china\Desktop\学术_论文\26八月论文集\3_BenignRAGTrap"
+BASE = os.environ.get("BENIGN_RAG_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, "paper")
 
 def load(p):
