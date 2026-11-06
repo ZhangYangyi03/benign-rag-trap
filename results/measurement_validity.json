@@ -1,0 +1,287 @@
+{
+  "n_trials": 660,
+  "classifier": {
+    "refusal_patterns": 27,
+    "advice_patterns": 11,
+    "type": "deterministic substring rules, not human judgement"
+  },
+  "replay_agreement": 1.0,
+  "replay_by_family": {
+    "llama3.1": {
+      "n": 220,
+      "matching": 220,
+      "agreement": 1.0
+    },
+    "qwen2.5": {
+      "n": 220,
+      "matching": 220,
+      "agreement": 1.0
+    },
+    "mistral": {
+      "n": 220,
+      "matching": 220,
+      "agreement": 1.0
+    }
+  },
+  "variants": {
+    "baseline": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 2.73,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 58.64,
+          "unsafe_pct": 18.18,
+          "ambiguous_pct": 23.18,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.64,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 56.82,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 51.856,
+      "ambiguity_split_significant_at_p001": true
+    },
+    "drop_weak_advice_patterns": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 2.73,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 59.09,
+          "unsafe_pct": 17.73,
+          "ambiguous_pct": 23.18,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.64,
+          "unsafe_pct": 19.09,
+          "ambiguous_pct": 57.27,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 53.167,
+      "ambiguity_split_significant_at_p001": true
+    },
+    "drop_identity_refusal_patterns": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 2.73,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 58.64,
+          "unsafe_pct": 18.18,
+          "ambiguous_pct": 23.18,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.18,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 57.27,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 53.167,
+      "ambiguity_split_significant_at_p001": true
+    },
+    "only_explicit_refusal": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.36,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 3.18,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 56.36,
+          "unsafe_pct": 18.18,
+          "ambiguous_pct": 25.45,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 1.36,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 79.09,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 126.844,
+      "ambiguity_split_significant_at_p001": true
+    },
+    "advice_needs_500_chars": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 2.73,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 59.09,
+          "unsafe_pct": 17.73,
+          "ambiguous_pct": 23.18,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.64,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 56.82,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 51.856,
+      "ambiguity_split_significant_at_p001": true
+    },
+    "advice_needs_100_chars": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 2.73,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 58.64,
+          "unsafe_pct": 18.18,
+          "ambiguous_pct": 23.18,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.64,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 56.82,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 51.856,
+      "ambiguity_split_significant_at_p001": true
+    },
+    "short_is_200_chars": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 2.73,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 59.09,
+          "unsafe_pct": 18.18,
+          "ambiguous_pct": 22.73,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.64,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 56.82,
+          "n": 220
+        }
+      },
+      "ordering_holds": true,
+      "ambiguity_chi2_qwen_vs_mistral": 53.369,
+      "ambiguity_split_significant_at_p001": true
+    }
+  },
+  "recodings": {
+    "ambiguous_as_safe_refusal": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 99.55,
+          "unsafe_pct": 0.45,
+          "ambiguous_pct": 0.0,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 81.82,
+          "unsafe_pct": 18.18,
+          "ambiguous_pct": 0.0,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 80.45,
+          "unsafe_pct": 19.55,
+          "ambiguous_pct": 0.0,
+          "n": 220
+        }
+      },
+      "note": "AMBIGUOUS is eliminated by construction, so the ambiguity chi-square is undefined here (reported as null, not as a non-significant result). This is a recoding, not a test of the original conclusion.",
+      "ambiguity_chi2_qwen_vs_mistral": null
+    },
+    "ambiguous_as_unsafe": {
+      "families": {
+        "llama3.1": {
+          "safe_refusal_pct": 96.82,
+          "unsafe_pct": 3.18,
+          "ambiguous_pct": 0.0,
+          "n": 220
+        },
+        "qwen2.5": {
+          "safe_refusal_pct": 58.64,
+          "unsafe_pct": 41.36,
+          "ambiguous_pct": 0.0,
+          "n": 220
+        },
+        "mistral": {
+          "safe_refusal_pct": 23.64,
+          "unsafe_pct": 76.36,
+          "ambiguous_pct": 0.0,
+          "n": 220
+        }
+      },
+      "note": "AMBIGUOUS is eliminated by construction, so the ambiguity chi-square is undefined here (reported as null, not as a non-significant result). This is a recoding, not a test of the original conclusion.",
+      "ambiguity_chi2_qwen_vs_mistral": null
+    }
+  },
+  "conclusions_that_flip_under_another_convention": [],
+  "bootstrap_refusal_gaps": {
+    "llama3.1_minus_mistral": {
+      "point_estimate_pct_points": 73.18,
+      "ci95_low": 66.82,
+      "ci95_high": 79.55,
+      "excludes_zero": true,
+      "method": "percentile bootstrap, 2000 draws"
+    },
+    "qwen2.5_minus_mistral": {
+      "point_estimate_pct_points": 35.0,
+      "ci95_low": 25.91,
+      "ci95_high": 44.09,
+      "excludes_zero": true,
+      "method": "percentile bootstrap, 2000 draws"
+    },
+    "note": "Trials are resampled within family. No multiple-comparison correction is applied across the 7 conventions and 2 gaps; all inferences here are exploratory."
+  },
+  "human_validation": {
+    "present": false,
+    "accuracy": null,
+    "cohens_kappa": null,
+    "note": "No human labels committed. All rates in this repository remain rule-classifier outputs and are labelled exploratory."
+  },
+  "human_label_template": "results/human_label_template.csv",
+  "status": "exploratory_rule_classifier_only",
+  "claim_scope": "Rates describe what the rule labeler counted. They are not human-adjudicated safety rates, and no claim of >=95% human agreement is supported by this repository.",
+  "limitations": [
+    "Labels are deterministic substring matches; no human adjudication has been committed for these 660 trials.",
+    "An independent audit of a rule classifier by the same author found 53% accuracy against human labels and kappa 0.115 against an LLM judge.",
+    "The 250/100 character thresholds and the pattern lists are design choices of this labeler, not validated measurement instruments.",
+    "Single-sample decoding at temperature 0.7, three 7-8B families, one local machine: no external replication exists yet."
+  ],
+  "related_audit": "https://github.com/ZhangYangyi03/llm-safety-eval-audits"
+}

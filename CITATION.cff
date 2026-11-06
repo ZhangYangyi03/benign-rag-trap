@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "The Benign RAG Trap: family-dependent refusal behaviour under benign deployment framing"
+authors:
+  - family-names: Zhang
+    given-names: Yangyi
+    affiliation: Georgetown University
+repository-code: "https://github.com/ZhangYangyi03/benign-rag-trap"
+license: MIT
+type: software

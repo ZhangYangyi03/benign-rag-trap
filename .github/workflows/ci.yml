@@ -15,3 +15,9 @@ jobs:
           python-version: "3.11"
       - name: Every number in README.md must reproduce from results/
         run: python scripts/verify_readme_numbers.py
+      - name: Measurement validity must reproduce from the committed responses
+        run: |
+          python scripts/measurement_validity.py
+          git diff --exit-code -- results/measurement_validity.json results/human_label_template.csv
+      - name: Claim scope must stay downgraded until human labels exist
+        run: python scripts/check_claim_scope.py
